@@ -1,7 +1,7 @@
 import java.util.Arrays;
 class Solution {
     public String solution(String s) {
-            String answer = "";
+        String answer = "";
 	        String[] sarr = new String[s.length()];
 
 	        //공백구분으로 배열에 넣기
