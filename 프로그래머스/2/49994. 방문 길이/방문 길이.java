@@ -1,7 +1,7 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-class Solution {
+public class Solution {
     public int solution(String dirs) {
         // 이동 방향을 정의합니다.
         int[][] directions = {
@@ -11,14 +11,13 @@ class Solution {
             {-1, 0}   // L: 왼쪽
         };
 
-        // 방문한 길을 추적하기 위한 Set
-        Set<String> visited = new HashSet<>();
+        // 방문한 길을 추적하기 위한 List
+        List<String> visited = new ArrayList<>();
 
         // 현재 위치 초기화
         int x = 0, y = 0;
         int length = 0;
 
-        // 명령어를 하나씩 처리합니다.
         for (char command : dirs.toCharArray()) {
             int dir = 0;
             switch (command) {
@@ -38,12 +37,13 @@ class Solution {
             }
 
             // 길을 문자열로 표현하여 방문 체크
-            String path1 = x + "," + y + ":" + newX + "," + newY;
-            String path2 = newX + "," + newY + ":" + x + "," + y;
+            String path1 = x + "," + y + "->" + newX + "," + newY;
+            String path2 = newX + "," + newY + "->" + x + "," + y;
 
             if (!visited.contains(path1) && !visited.contains(path2)) {
                 length++;
                 visited.add(path1);
+                visited.add(path2);
             }
 
             // 현재 위치 갱신
